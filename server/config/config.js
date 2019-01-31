@@ -10,9 +10,9 @@ module.exports = {
     // runenv: "prod",
     server_port: 8024,
     base_url: "http://127.0.0.1:8024",
-    // base_url: "http://mobilepwtest.koscom.co.kr",
-    // base_url: "https://mobilepw.koscom.co.kr",
-    db_url: "mongodb://127.0.0.1:27017/mobilepw",
+    // base_url: "http://etptest.koscom.co.kr",
+    // base_url: "https://etp.koscom.co.kr",
+    db_url: "mongodb://127.0.0.1:27017/etp",
     pwd_salt: "11aabb..",
     pwd_default: "11aabb..",
     db_schemas: [
@@ -21,6 +21,7 @@ module.exports = {
     ],
     route_info: [
         // 로그인
+        { file: './admin/login', path: '/logintest', method: 'checkLoginTest', session: 'uncheck', type: 'get' },
         { file: './admin/login', path: '/login', method: 'checkLogin', session: 'uncheck', type: 'post' },
         //공지사항
         { file: './admin/board', path: '/board/liststory', method: 'listStory',  session: 'check', type: 'get' },

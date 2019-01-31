@@ -1,4 +1,5 @@
 import  Home        from './components/Home/Home.vue'
+import  IndexMain   from './components/Home/Index/IndexMain.vue'
 import  AdminMain   from './components/admin/AdminMain.vue'
 import  Notice      from './components/admin/Notice/Notice.vue'
 import  ChangeNotice      from './components/admin/ChangeNotice/ChangeNotice.vue'
@@ -7,15 +8,16 @@ import  Chart       from './components/admin/Chart/Chart.vue'
 import  ChartTerm   from './components/admin/Chart/ChartTerm.vue'
 import  Users       from './components/admin/Users/Users.vue'
 
-import  UserMain    from './components/user/UserMain.vue'
-import  UNotice     from './components/user/Notice/Notice.vue'
-import  UChart      from './components/user/Chart/Chart.vue'
-import  UChartTerm  from './components/user/Chart/ChartTerm.vue'
-
 export const routes = [
   {
     path : '/', 
-    component: Home
+    component: Home,
+    children: [
+        {
+            path : 'index',
+            component: IndexMain
+        },
+    ]
   },
   {
     path : '/admin',
@@ -47,28 +49,5 @@ export const routes = [
         },
     ]
   },
-  {
-    path : '/user',
-    component: UserMain,
-    children: [
-        {
-            path : 'notice',
-            component: UNotice
-        },
-        {
-            path : 'chart',
-            component: UChart
-        },
-        {
-            path : 'chartterm',
-            component: UChartTerm
-        },
-    ]
-  },
-
-
-
-
-
- 
+  
 ]

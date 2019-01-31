@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <router-link to="/notice" class="navbar-brand">IT-HUB</router-link>
+            <router-link to="/notice" class="navbar-brand">ETP PLATFORM</router-link>
             <div id="navbar" class="collapse navbar-collapse">
                 <div class="navbar-nav mr-auto">
                     <ul class="nav navbar-nav">
