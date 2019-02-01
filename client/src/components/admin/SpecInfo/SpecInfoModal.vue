@@ -57,7 +57,7 @@
 
 <script>
 import { VueEditor } from 'vue2-editor'
-import  UtilConstant from  '../../../js/utilConstant.js'
+import  UtilConstant from  '../../../js/constant.js'
 
 export default {
     props: ["storyinfo", "gubun"],

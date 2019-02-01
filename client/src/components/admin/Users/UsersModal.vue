@@ -125,7 +125,7 @@
 
 <script>
 import  Config       from  '../../../js/config.js'
-import  UtilConstant from  '../../../js/utilConstant.js'
+import  UtilConstant from  '../../../js/constant.js'
 import  ChangePwdModal     from  '../../common/ChangePwdModal.vue'
 
 export default {

@@ -1,5 +1,12 @@
+// 사용자
 import  Home        from './components/Home/Home.vue'
-import  IndexMain   from './components/Home/Index/IndexMain.vue'
+import  IndexManageMain   from './components/Home/Index/Manage/IndexManageMain.vue'
+import  IndexRegisterMain   from './components/Home/Index/Register/IndexRegisterMain.vue'
+import  IndexDevelopMain   from './components/Home/Index/Develop/IndexDevelopMain.vue'
+import  EtpManageMain   from './components/Home/Etp/Manage/EtpManageMain.vue'
+import  EtpRegisterMain   from './components/Home/Etp/Register/EtpRegisterMain.vue'
+import  EtpContractMain   from './components/Home/Etp/Contract/EtpContractMain.vue'
+// 관리자
 import  AdminMain   from './components/admin/AdminMain.vue'
 import  Notice      from './components/admin/Notice/Notice.vue'
 import  ChangeNotice      from './components/admin/ChangeNotice/ChangeNotice.vue'
@@ -13,9 +20,25 @@ export const routes = [
     path : '/', 
     component: Home,
     children: [
-        {
-            path : 'index',
-            component: IndexMain
+        // INDEX
+        {   path : 'index/manage',
+            component: IndexManageMain,
+        },
+        {   path : 'index/register',
+            component: IndexRegisterMain,
+        },
+        {   path : 'index/develop',
+            component: IndexDevelopMain,
+        },
+        // ETP
+        {   path : 'etp/manage',
+            component: EtpManageMain,
+        },
+        {   path : 'etp/register',
+            component: EtpRegisterMain,
+        },
+        {   path : 'etp/contract',
+            component: EtpContractMain,
         },
     ]
   },
@@ -23,28 +46,22 @@ export const routes = [
     path : '/admin',
     component: AdminMain,
     children: [
-        {
-            path : 'notice',
+        {   path : 'notice',
             component: Notice
         },
-        {
-            path : 'changenotice',
+        {   path : 'changenotice',
             component: ChangeNotice
         },
-        {
-            path : 'specinfo',
+        {   path : 'specinfo',
             component: SpecInfo
         },
-        {
-            path : 'chart',
+        {   path : 'chart',
             component: Chart
         },
-        {
-            path : 'chartterm',
+        {   path : 'chartterm',
             component: ChartTerm
         },
-        {
-            path : 'users',
+        {   path : 'users',
             component: Users
         },
     ]

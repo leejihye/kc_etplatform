@@ -1,6 +1,6 @@
 <template>
   <footer>
-      <div class="info">
+      <div class="info-fotter">
         <div id="info-help">
             <v-icon small v-on:click="menuClick">error</v-icon>
             <span>도움말</span>
@@ -50,20 +50,20 @@ footer {
     background-color: #f2f2f2;
 }
 
-.info {
+.info-fotter {
     margin-top: 10px;
     vertical-align:middle;
 }
-.info * {
+.info-fotter * {
     color:#555;
     font-size: 12px;
 }
-.info > * {
+.info-fotter > * {
     display: inline-block;
     margin-left: 20px;
 }
 
-.info #info-copyright {
+.info-fotter #info-copyright {
     float: right;
     margin-right: 30px;
 }

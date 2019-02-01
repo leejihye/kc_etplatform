@@ -1,38 +1,38 @@
 <template>
 <aside>
-  <router-link to="/index"><h3>INDEX</h3></router-link>
+  <router-link to="/index/manage"><h3>INDEX</h3></router-link>
   <ul>
-    <li><a href="#">지수관리</a></li>
-    <li><a href="#" class="active">지수등록</a></li>
-    <li><a href="#">지수개발</a></li>
+    <li><router-link to="/index/manage">지수관리</router-link></li>
+    <li><router-link to="/index/register">지수등록</router-link></li>
+    <li><router-link to="/index/develop">지수개발</router-link></li>
   </ul>
   <hr>
 
-  <h3>ETP</h3>
+  <router-link to="/etp/manage"><h3>ETP</h3></router-link>
   <ul>
-    <li><a href="#">ETP 운용 관리</a></li>
-    <li><a href="#">ETP 신규 등록</a></li>
-    <li><a href="#">계약지수 목록</a></li>
+    <li><router-link to="/etp/manage">ETP 운용 관리</router-link></li>
+    <li><router-link to="/etp/register">ETP 신규 등록</router-link></li>
+    <li><router-link to="/etp/contract">계약지수 목록</router-link></li>
   </ul>
   <hr>
 
-  <h3>TODAY</h3>
+  <router-link to="/"><h3>TODAY</h3></router-link>
   <hr>
 
-  <h3>SUPPORT</h3>
+  <router-link to="/"><h3>SUPPORT</h3></router-link>
   <ul>
-    <li><a href="#">기초지수코드정보</a></li>
-    <li><a href="#">지수채용주식수</a></li>
-    <li><a href="#">기초지수종가</a></li>
-    <li><a href="#">추적오차율 괴리</a></li>
+    <li><router-link to="/">기초지수코드정보</router-link></li>
+    <li><router-link to="/">지수채용주식수</router-link></li>
+    <li><router-link to="/">기초지수종가</router-link></li>
+    <li><router-link to="/">추적오차율 괴리</router-link></li>
   </ul>
   <hr>
 
-  <h3>ADMIN</h3>
+  <router-link to="/"><h3>ADMIN</h3></router-link>
   <ul>
-    <li><a href="#">회원관리</a></li>
-    <li><a href="#">지수관리</a></li>
-    <li><a href="#">ETP관리</a></li>
+    <li><router-link to="/">회원관리</router-link></li>
+    <li><router-link to="/">지수관리</router-link></li>
+    <li><router-link to="/">ETP관리</router-link></li>
   </ul>
   <hr>
 </aside>
@@ -46,12 +46,6 @@ export default {
         };
     },
     methods: {
-        dashboard1: function() {
-            console.log('dashboard1');
-        },
-        dashboard2: function() {
-            console.log('dashboard2');
-        },
     }
 }
 </script>

@@ -6,7 +6,7 @@
           </div>
 
           <div id="title-content">
-            <span>ETP PLATFORM</span>
+            <router-link to="/"><span>ETP PLATFORM</span></router-link>
           </div>
           
           <div id="title-avatar">

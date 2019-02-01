@@ -30,7 +30,7 @@ mydb.init = function(app) {
     })
 
     var modelLen = config.db_model.length;
-	console.log('설정에 정의된 모델의 수 : %d', schemaLen);
+	console.log('설정에 정의된 모델의 수 : %d', modelLen);
 	
 	for (var i = 0; i < modelLen; i++) {
 		var curItem = config.db_model[i];

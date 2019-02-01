@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-app>
         <ToolBar></ToolBar>
         <NoticeModal v-if="showModal"></NoticeModal>
         <NavFull v-if="showDrawer"></NavFull>
@@ -8,7 +8,7 @@
 -->        
         <router-view></router-view>
         <Footer></Footer>
-    </div>
+    </v-app>
 </template> 
 
 <script>

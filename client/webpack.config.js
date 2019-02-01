@@ -7,12 +7,12 @@ module.exports = {
     //   entry: './src/main.js',
     entry: [
         'babel-polyfill',
-        './src/main.js'
+        './src/main.js',
     ],
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: 'build.js'
+        filename: 'build.js',
     },
     module: {
         rules: [{
@@ -20,43 +20,44 @@ module.exports = {
                 use: [
                     // 'vue-style-loader',
                     'style-loader',
-                    'css-loader'
+                    'css-loader',
                 ],
             }, {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: {
-                    loaders: {}
+                    loaders: {},
                     // other vue-loader options go here
                 }
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
             },
             {
                 test: /\.(png|jpg|gif|svg|eot|woff|woff2|ttf)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '[name].[ext]?[hash]'
+                    name: '[name].[ext]?[hash]',
                 }
             }
         ]
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.resolve(__dirname, 'src'),
         },
-        extensions: ['*', '.js', '.vue', '.json']
+        extensions: ['*', '.js', '.vue', '.json'],
     },
     devServer: {
         historyApiFallback: true,
         noInfo: true,
-        overlay: true
+        overlay: true,
     },
     performance: {
-        hints: false
+        hints: false,
     },
     devtool: '#eval-source-map'
 }

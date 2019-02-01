@@ -12,7 +12,7 @@ module.exports = {
     password: "kc_etp",
     database: "kc_etp",
     db_model: [
-        { file: './mysql/user_model', modelName: 'UserModel' },
+        { file: './mysql/user/member_model', modelName: 'UserMember' },
+        { file: './mysql/admin/member_model', modelName: 'AdminMember' },
     ],
-    
 }
