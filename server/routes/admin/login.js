@@ -10,18 +10,9 @@ var config = require('../../config/config');
 var checkLoginTest = function(req, res) {
     console.log('users 모듈 안에 있는 checkLogin1 호출됨.');
 
-    var mysql      = require('mysql');
-    var connection = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'kc_etp',
-      password : 'kc_etp',
-      port     : 3306,
-      database : 'kc_etp'
-    });
+    var mydb = req.app.get('mydb').db;
     
-    connection.connect();
-    
-    connection.query('SELECT * from etp_test', function(err, rows, fields) {
+    mydb.query('SELECT * from etp_test', function(err, rows, fields) {
       if (!err){
         console.log('The solution is: ', rows);
         res.json({ success: false, message: rows });
@@ -30,23 +21,6 @@ var checkLoginTest = function(req, res) {
         console.log('Error while performing Query.', err);
       }        
     });
-    
-    connection.end();
-/*    
-    if(config.runenv == "dev") {
-        var ip = "211.255.203.42";
-    }else {
-        var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;
-    }
-
-    console.log('접속시도IP : ' + ip);
-    //접속 허용 시간 
-    var dt = new Date();
-    var dt_time = dt.getHours();
-    console.log('client IP***********--> ' + ip);
-
-*/    
-
 };
 
 //로그인
