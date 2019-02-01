@@ -10,9 +10,11 @@ var config = require('../../config/config');
 var checkLoginTest = function(req, res) {
     console.log('users 모듈 안에 있는 checkLogin1 호출됨.');
 
-    var mydb = req.app.get('mydb').db;
+    var mydb = req.app.get('mydb');
+    var md = req.app.get('mydb').UserModel;
+    var options = {};
     
-    mydb.query('SELECT * from etp_test', function(err, rows, fields) {
+    mydb.db.query(md.selectUserList(options), function(err, rows, fields) {
       if (!err){
         console.log('The solution is: ', rows);
         res.json({ success: false, message: rows });
