@@ -32,7 +32,6 @@ var cron = require('./config/cron_scheduler');
 
 // 모듈로 분리한 데이터베이스 파일 불러오기
 var mydb = require('./database/mysql_con');
-var mongodb = require('./database/mongodb_con');
 
 // 모듈로 분리한 라우팅 파일 불러오기
 var route_loader = require('./routes/route_loader');
@@ -69,9 +68,9 @@ app.use(static(path.join(__dirname, 'public')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 //라우팅에 대한 사전 세션체크 (개발시 체크 하지 않음)
-if(config.runenv == "dev") {
-// route_loader.sessionCheckRegister(app);
-}else {
+if (config.runenv == "dev") {
+    // route_loader.sessionCheckRegister(app);
+} else {
     route_loader.sessionCheckRegister(app);
 }
 
@@ -113,9 +112,6 @@ app.on('close', function() {
     if (mydb.db) {
         mydb.db.close();
     }
-    if (mongodb.db) {
-        mongodb.db.close();
-    }
 });
 
 // 시작된 서버 객체를 리턴받도록 합니다. 
@@ -123,6 +119,4 @@ var server = http.createServer(app).listen(app.get('port'), function(req, res) {
     console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
     // MYSQL 초기화
     mydb.init(app);
-    // MONGDB 초기화
-    mongodb.init(app);
 });
