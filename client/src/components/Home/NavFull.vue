@@ -96,9 +96,9 @@ export default {
   },
 
   methods: {
-    menuClick: function() {
+    menuClick: function(isDrawer) {
       console.log("NavFull menuClick");
-      this.drawer = !this.drawer;
+      this.drawer = isDrawer;
     },
   }
 }
@@ -108,7 +108,7 @@ export default {
 aside {
   /* for fixed side bar */
   position: fixed;
-  top: 42px;
+  top: 60px;
   bottom: 0;
   width: 300px;
 }

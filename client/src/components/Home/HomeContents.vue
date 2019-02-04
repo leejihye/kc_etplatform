@@ -25,9 +25,9 @@ export default {
     },
 
     methods: {
-        menuClick: function() {
+        menuClick: function(isDrawer) {
         console.log("NavFull menuClick");
-        this.isDrawer = !this.isDrawer;
+        this.isDrawer = !isDrawer;
         },
     }
 }
@@ -35,16 +35,10 @@ export default {
 
 <style scoped>
 main {
-    /*
-    position: relative;
-    top:48px;
-    left:302px;
-    */
     float: right;
     margin-left:310px;
-    margin-top:63px;
+    margin-top:72px;
     margin-right:10px;
-
 }
 
 .drawer {
