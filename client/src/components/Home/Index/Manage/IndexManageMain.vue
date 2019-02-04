@@ -54,9 +54,10 @@ export default {
 
 <style scoped>
 main {
-    position:fixed;
-    margin-top:62px;
+    position: relative;
+    /*
     margin-left:200px;
     color: #000;
+    */
 }
 </style>

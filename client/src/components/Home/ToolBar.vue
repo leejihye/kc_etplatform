@@ -9,6 +9,7 @@
             <router-link to="/"><span>ETP PLATFORM</span></router-link>
           </div>
           
+          <v-spacer></v-spacer>
           <div id="title-avatar">
             <v-avatar
                 :tile="tile"
@@ -39,7 +40,7 @@ export default {
     },
     methods: {
         menuClick: function() {
-            // console.log('menuClick!!!');
+            console.log('ToolBar menuClick!!!');
             this.$EventBus.$emit("menuClick");
         },
     }
@@ -76,12 +77,10 @@ header {
 }
 
 .title #title-badge {
-    float: right;
     margin-right : 40px;
 }
 
 .title #title-avatar {
-    float: right;
     margin-right : 40px;
 }
 

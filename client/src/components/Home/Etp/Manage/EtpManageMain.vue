@@ -30,6 +30,10 @@ export default {
     methods: {
         showChart: function() {
             // Define the chart to be drawn.
+            var options = {'legend':'left',
+                'title':'My Big Pie Chart',
+                'is3D':true,
+                 'width':600, 'height':400};
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Element');
             data.addColumn('number', 'Percentage');
@@ -41,7 +45,7 @@ export default {
 
             // Instantiate and draw the chart.
             var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-            chart.draw(data, null);
+            chart.draw(data, options);
         },
     }
 }
