@@ -18,6 +18,7 @@ export default {
     },
     created: function() {
         this.$EventBus.$on('menuClick' , this.menuClick);
+        this.$router.push({ path: '/index/manage' });
     },
     beforeDestroy() {
         this.$EventBus.$off('menuClick');
@@ -34,14 +35,20 @@ export default {
 
 <style scoped>
 main {
+    /*
     position: relative;
-    margin-top:10px;
-    margin-left:156px;
+    top:48px;
+    left:302px;
+    */
+    float: right;
+    margin-left:310px;
+    margin-top:63px;
+    margin-right:10px;
 
 }
 
 .drawer {
-    margin-left:-146px;
+    margin-left:0px;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <div class="submain">
         <v-tabs
           slot="extension"
           v-model="tab"
@@ -24,7 +24,7 @@
                 <IndexDetail></IndexDetail>
             </v-tab-item>
       </v-tabs-items>    
-    </main>
+    </div>
 </template>
 
 <script>
@@ -53,9 +53,9 @@ export default {
 </script>
 
 <style scoped>
-main {
-    position: relative;
+.submain {
     /*
+    position: relative;
     margin-left:200px;
     color: #000;
     */

@@ -12,19 +12,16 @@
     no-action
   >
   <v-list-tile slot="activator">
-    <v-list-tile-content>
       <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-    </v-list-tile-content>
   </v-list-tile>
     <v-list-tile
-      v-for="subItem in item.items"
+      v-for="subItem in item.subitems"
       :key="subItem.title"
     >
     <v-list-tile-content>
-      <v-list-tile-title><router-link :to="subItem.link">{{ subItem.title }}</router-link></v-list-tile-title>
+      <v-list-tile-title><router-link class="routerlink" :to="subItem.link">{{ subItem.title }}</router-link></v-list-tile-title>
     </v-list-tile-content>
-
-  </v-list-tile>
+    </v-list-tile>
   </v-list-group>
 </v-list>
 </v-navigation-drawer>
@@ -38,53 +35,55 @@ export default {
       drawer: true,
       items: [
         {
-          action: 'local_activity',
+          action: 'equalizer',
           title: 'INDEX',
           active: true,
-          items: [
+          subitems: [
             { title: '지수관리', link: '/index/manage' },
             { title: '지수등록', link: '/index/register'  },
             { title: '지수개발', link: '/index/develop'  }
-          ]
+          ],
         },
         {
-          action: 'local_activity',
+          action: 'accessibility_new',
           title: 'ETP',
           active: true,
-          items: [
+          subitems: [
             { title: 'ETP 운용 관리', link: '/etp/manage' },
             { title: 'ETP 신규 등록', link: '/etp/register'  },
             { title: '계약지수 목록', link: '/etp/contract'  }
-          ]
+          ],
         },
         {
-          action: 'local_activity',
+          action: 'schedule',
           title: 'TODAY',
           active: true,
-          items: [
-            
-          ]
+          subitems: [
+            { title: 'TODAY1', link: '/etp/manage' },
+            { title: 'TODAY2', link: '/etp/register'  },
+            { title: 'TODAY3', link: '/etp/contract'  }
+          ],
         },
         {
-          action: 'local_activity',
+          action: 'account_balance',
           title: 'SUPPORT',
           active: true,
-          items: [
+          subitems: [
             { title: '기초지수코드정보', link: '/index/manage' },
             { title: '지수채용주식수', link: '/index/register'  },
             { title: '기초지수종가', link: '/index/develop'  },
-            { title: '추적오차율 괴리', link: '/index/develop'  }
-          ]
+            { title: '추적오차율 괴리', link: '/index/develop'  },
+          ],
         },
         {
-          action: 'local_activity',
+          action: 'account_circle',
           title: 'ADMIN',
           active: true,
-          items: [
+          subitems: [
             { title: '회원관리', link: '/index/manage' },
             { title: '지수관리', link: '/index/register'  },
-            { title: 'ETP관리', link: '/index/develop'  }
-          ]
+            { title: 'ETP관리', link: '/index/develop'  },
+          ],
         },
       ] //item
     }; // return
@@ -109,13 +108,9 @@ export default {
 aside {
   /* for fixed side bar */
   position: fixed;
-  top: 56px;
-  /*
+  top: 42px;
   bottom: 0;
-  */
-  background-color: gray;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
-
+  width: 300px;
 }
 
 </style>
