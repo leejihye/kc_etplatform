@@ -1,8 +1,9 @@
 <template>
-    <main>
-        <div id="myPieChart" />
-        
-    </main>
+    <v-layout row wrap>
+        <v-flex xs12>
+            <div id="myPieChart" />
+      </v-flex>
+    </v-layout>
 </template>
 
 <script>
@@ -52,10 +53,4 @@ export default {
 </script>
 
 <style scoped>
-main {
-    position:fixed;
-    margin-top:62px;
-    margin-left:200px;
-    color: #000;
-}
 </style>

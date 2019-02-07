@@ -1,7 +1,9 @@
 <template>
-    <main>
-        <h1>계약지수목록</h1>
-    </main>
+    <v-layout row wrap>
+        <v-flex xs12>
+            <h1> 계약지수 목록 개발중....</h1>
+      </v-flex>
+    </v-layout> 
 </template>
 
 <script>
@@ -22,11 +24,5 @@ export default {
 </script>
 
 <style scoped>
-main {
-    position:fixed;
-    margin-top:62px;
-    margin-left:200px;
-    color: #000;
-}
 
 </style>

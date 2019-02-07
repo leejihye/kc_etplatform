@@ -1,24 +1,22 @@
 <template>
-  <footer>
-      <div class="info-fotter">
-        <div id="info-help">
-            <v-icon small v-on:click="menuClick">error</v-icon>
-            <span>도움말</span>
-        </div>
-        <div id="info-contact">
-            <v-icon small v-on:click="menuClick">local_offer</v-icon>
-            <span>KOSCOM 연락처</span>
-        </div>
-        <div id="info-register">
-            <v-icon small v-on:click="menuClick">assignment_ind</v-icon>
-            <span>사용자등록</span>
-        </div>
-        <div id="info-copyright">
-            <span>&copy; Copyright KOSCOM 2019. All rights reserved.</span>
-        </div>
-    </div>
-          
-    </footer>
+<v-footer app>
+    <v-layout row wrap align-center>
+    <v-flex md4>
+        <span style="padding-left:30px;"></span>
+        <v-icon small>error</v-icon>
+        <span>도움말</span>
+        <span style="padding-left:20px;"></span>
+        <v-icon small>local_offer</v-icon>
+        <span>KOSCOM 연락처</span>
+        <span style="padding-left:20px;"></span>
+        <v-icon small>assignment_ind</v-icon>
+        <span>사용자등록</span>
+    </v-flex>
+    <v-flex md-3 offset-md5>
+        <span>&copy; Copyright KOSCOM 2019. All rights reserved.</span>
+    </v-flex>
+    </v-layout>
+</v-footer>
 </template>
 
 <script>
@@ -30,41 +28,10 @@ export default {
         };
     },
     methods: {
-        menuClick: function() {
-            // console.log('menuClick!!!');
-            this.$EventBus.$emit("menuClick");
-        },
     }
 }
 </script>
 
 <style scoped>
-footer {
-    /* footer를 aside위에 올리기 위해 사용(부유객체) */
-    position: fixed;
-    bottom: 0;
-    height: 40px;
-    width: 100%;
-    color: #8a8c8f;
-    border-top: 1px solid #dee5e7;
-    background-color: #f2f2f2;
-}
 
-.info-fotter {
-    margin-top: 10px;
-    vertical-align:middle;
-}
-.info-fotter * {
-    color:#555;
-    font-size: 12px;
-}
-.info-fotter > * {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-.info-fotter #info-copyright {
-    float: right;
-    margin-right: 30px;
-}
 </style>

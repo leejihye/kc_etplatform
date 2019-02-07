@@ -1,17 +1,45 @@
 <template>
-    <main>
-        <h1>ETP 신규등록</h1>
-    </main>
+    <v-layout row wrap>
+        <v-flex xs12>
+            <v-tabs
+            slot="extension"
+            dark
+            v-model="tab"
+            align-with-title
+            >
+            <v-tabs-slider color="yellow"></v-tabs-slider>
+    
+            <v-tab v-for="item in items" :key="item">
+                {{ item }}
+            </v-tab>
+            </v-tabs>
+
+            <v-tabs-items v-model="tab">
+                <v-tab-item>
+                    <EtpApplyList></EtpApplyList>
+                </v-tab-item>
+                <v-tab-item>
+                    <EtpResiter></EtpResiter>
+                </v-tab-item>
+        </v-tabs-items>    
+      </v-flex>
+    </v-layout> 
 </template>
 
 <script>
+import EtpApplyList   from  './EtpApplyList.vue'
+import EtpResiter   from  './EtpRegister.vue'
 
 export default {
         data() {
             return {
+                tab: null,
+                items: ['신청현황', '신규등록'],
     	};
     },    
     components: {
+        EtpApplyList     : EtpApplyList,
+        EtpResiter     : EtpResiter,
     },
     created: function() {
     },
@@ -22,11 +50,5 @@ export default {
 </script>
 
 <style scoped>
-main {
-    position:fixed;
-    margin-top:62px;
-    margin-left:200px;
-    color: #000;
-}
 
 </style>

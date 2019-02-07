@@ -1,9 +1,6 @@
 <template>
-<aside>
-<v-navigation-drawer
-  v-model="drawer"
->
-<v-list dense expand>
+<v-navigation-drawer fixed app clipped width="240" class="drawer-style" id="style-1">
+<v-list dense expand subheader>
   <v-list-group
     v-for="item in items"
     v-model="item.active"
@@ -12,7 +9,9 @@
     no-action
   >
   <v-list-tile slot="activator">
+    <v-list-tile-content>
       <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+    </v-list-tile-content>
   </v-list-tile>
     <v-list-tile
       v-for="subItem in item.subitems"
@@ -25,14 +24,12 @@
   </v-list-group>
 </v-list>
 </v-navigation-drawer>
-</aside>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      drawer: true,
       items: [
         {
           action: 'equalizer',
@@ -89,28 +86,34 @@ export default {
     }; // return
   },
   created: function() {
-    this.$EventBus.$on('menuClick' , this.menuClick);
   },
   beforeDestroy() {
-    this.$EventBus.$off('menuClick');
   },
 
   methods: {
-    menuClick: function(isDrawer) {
-      console.log("NavFull menuClick");
-      this.drawer = isDrawer;
-    },
   }
 }
 </script>
 
 <style scoped>
-aside {
-  /* for fixed side bar */
-  position: fixed;
-  top: 60px;
-  bottom: 0;
-  width: 300px;
-}
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+  }
 
+  #style-1::-webkit-scrollbar-thumb {
+    background-color: #F90; 
+    background-image: -webkit-linear-gradient(90deg, rgba(255, 255, 255, .2) 25%,
+                        transparent 25%,
+                        transparent 50%,
+                        rgba(255, 255, 255, .2) 50%,
+                        rgba(255, 255, 255, .2) 75%,
+                        transparent 75%,
+                        transparent)
+  }
+
+  #style-1::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+  }
 </style>

@@ -13,6 +13,7 @@ module.exports = {
     database: "kc_etp",
     db_model: [
         { file: './mysql/user/member_model', modelName: 'UserMember' },
+        { file: './mysql/user/etpregister_model', modelName: 'EtpRegister' },
         { file: './mysql/admin/member_model', modelName: 'AdminMember' },
     ],
 }

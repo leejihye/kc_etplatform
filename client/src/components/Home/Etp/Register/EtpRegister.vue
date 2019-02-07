@@ -1,12 +1,10 @@
 <template>
-    <v-data-table 
+    <v-data-table
       :headers="headers"
       :items="desserts"
-      :rows-per-page-items="rowsPerPageItems"
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <td>{{ props.index + 1 }}</td>
         <td>{{ props.item.name }}</td>
         <td class="text-xs-right">{{ props.item.calories }}</td>
         <td class="text-xs-right">{{ props.item.fat }}</td>
@@ -18,19 +16,12 @@
 </template>
 
 <script>
-import Config       from "@/js/config.js"
 
 export default {
         props: [],
         data() {
             return {
-              rowsPerPageItems: [20, 10, 30, 50],
               headers: [
-                {
-                  text: 'No',
-                  sortable: false,
-                  value: 'index',
-                },
         {
           text: 'Dessert (100g serving)',
           align: 'left',
@@ -148,8 +139,5 @@ export default {
     }
 </script>
 <style scoped>
-  table.v-table tbody td, table.v-table tbody th {
-      height: 30px;
-  }
 
 </style>

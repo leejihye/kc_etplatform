@@ -1,6 +1,5 @@
 <template>
-<header>
-  <v-toolbar color="white">
+  <v-toolbar fixed app light clipped-left color="white" class="elevation-0">
       <v-toolbar-side-icon @click="menuClick"></v-toolbar-side-icon>
       <v-toolbar-title><router-link class="routerlink" to="/index/manage">ETP PLATFORM</router-link></v-toolbar-title>
       <v-spacer></v-spacer>
@@ -19,7 +18,6 @@
         <v-btn flat color="primary">[DBfn] James</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-</header>    
 </template>
 
 <script>
@@ -42,8 +40,8 @@ export default {
 </script>
 
 <style scoped>
+/*
 header {
-  /* for sticky header */
   position: fixed;
   top: 0;
   height: 60px;
@@ -51,5 +49,6 @@ header {
   z-index: 2000;
   background-color: #fff;
 }
+*/
 
 </style>

@@ -36,7 +36,7 @@ module.exports = {
         { file: './admin/users', path: '/admin/pwdinit', method: 'pwdInit',  session: 'check', type: 'post' },
         { file: './admin/users', path: '/admin/pwdchange', method: 'pwdChange',  session: 'check', type: 'post' },
         //일반고객 특이사항
-        { file: './user/specinfo', path: '/user/getuserspecinfo', method: 'getUserSpecInfo', session: 'check', type: 'get' },
+        { file: './user/etp/etpregister', path: '/user/etp/getetpapplylist', method: 'getEtpApplyList', session: 'uncheck', type: 'get' },
         //일반고객 리포트
         { file: './user/chart', path: '/user/chart/chartlistterm', method: 'getUserChartListTerm', session: 'check', type: 'post' },
         { file: './user/chart', path: '/user/chart/downloadfileterm', method: 'downloadFileTerm',  session: 'check', type: 'post' },

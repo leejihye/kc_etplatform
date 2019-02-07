@@ -1,30 +1,32 @@
 <template>
-    <div class="submain">
-        <v-tabs
-          slot="extension"
-          v-model="tab"
-          color="white"
-          align-with-title
-        >
-          <v-tabs-slider color="yellow"></v-tabs-slider>
-  
-          <v-tab v-for="item in items" :key="item">
-            {{ item }}
-          </v-tab>
-        </v-tabs>
+    <v-layout row wrap>
+        <v-flex xs12>
+            <v-tabs
+            slot="extension"
+            dark
+            v-model="tab"
+            align-with-title
+            >
+            <v-tabs-slider color="yellow"></v-tabs-slider>
+    
+            <v-tab v-for="item in items" :key="item">
+                {{ item }}
+            </v-tab>
+            </v-tabs>
 
-        <v-tabs-items v-model="tab">
-            <v-tab-item>
-                <Summary></Summary>
-            </v-tab-item>
-            <v-tab-item>
-                <IndexList></IndexList>
-            </v-tab-item>
-            <v-tab-item>
-                <IndexDetail></IndexDetail>
-            </v-tab-item>
-      </v-tabs-items>    
-    </div>
+            <v-tabs-items v-model="tab">
+                <v-tab-item>
+                    <Summary></Summary>
+                </v-tab-item>
+                <v-tab-item>
+                    <IndexList></IndexList>
+                </v-tab-item>
+                <v-tab-item>
+                    <IndexDetail></IndexDetail>
+                </v-tab-item>
+        </v-tabs-items>    
+      </v-flex>
+    </v-layout> 
 </template>
 
 <script>
@@ -53,11 +55,5 @@ export default {
 </script>
 
 <style scoped>
-.submain {
-    /*
-    position: relative;
-    margin-left:200px;
-    color: #000;
-    */
-}
+
 </style>
