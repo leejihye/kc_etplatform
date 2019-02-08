@@ -26,4 +26,5 @@ model.selectEtpRegisterList = function(options) {
     return stmt;
 }
 
+
 module.exports = model;
