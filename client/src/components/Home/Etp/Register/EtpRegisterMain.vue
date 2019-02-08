@@ -3,9 +3,10 @@
         <v-flex xs12>
             <v-tabs
             slot="extension"
-            dark
             v-model="tab"
             align-with-title
+            dark
+            color=#333
             >
             <v-tabs-slider color="yellow"></v-tabs-slider>
     

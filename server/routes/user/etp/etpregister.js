@@ -10,7 +10,8 @@ var getEtpApplyList = function(req, res) {
     console.log('etpregister 모듈 안에 있는 getetpapplylist 호출됨.');
 
     var mydb = req.app.get('mydb');
-    var options = {id:'admin'};
+    // var options = {id:'admin'};
+    var options = {};
     var stmt = mydb.EtpRegister.selectEtpRegisterList(options);
     console.log(stmt);
     
