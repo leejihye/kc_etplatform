@@ -8,17 +8,17 @@
 var model = {};
 
 model.selectEtpRegisterList = function(options) {
-	console.log('selectEtpRegisterList');
+    console.log('selectEtpRegisterList');
 
-    var stmt = 'SELECT b.inst_nm, a.isu_kor_nm, a.req_date, a.kor_for_type, \
+    var stmt = 'SELECT b.inst_name, a.isu_kor_nm, a.req_date, a.kor_for_type, \
         ifnull(a.ridx_dist_sym_code, a.idx_sym_code) as basic_idx, \
         a.isu_eng_nm \
         from m001uetpmaster a \
         LEFT JOIN domain_mast b \
         ON a.inst_cd = b.inst_cd \
         WHERE 1=1';
-    
-    if(options.id != null && options != "") {
+
+    if (options.id != null && options != "") {
         stmt += ` AND ID = \'${options.id}\'`;
     }
 

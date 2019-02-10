@@ -4,11 +4,12 @@
       :items="results"
       :rows-per-page-items="rowsPerPageItems"
       dark
+      disable-initial-sort
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
         <td class="text-xs-center">{{ props.index+1 }}</td>
-        <td class="text-xs-center">{{ props.item.inst_nm }}</td>
+        <td class="text-xs-center">{{ props.item.inst_name }}</td>
         <td class="text-xs-left">{{ props.item.isu_kor_nm }}</td>
         <td class="text-xs-left">{{ props.item.req_date }}</td>
         <td class="text-xs-left">{{ props.item.kor_for_type }}</td>
@@ -28,7 +29,7 @@ export default {
       rowsPerPageItems: [20, 10, 30, 50],
       headers: [
         { text: 'No', align:"center", sortable: false, value: 'index'},
-        { text: '발행사', align:"center", value: 'inst_cd', class: 'tableheader'},
+        { text: '발행사', align:"center", value: 'inst_name'},
         { text: '종목명', align:"center", value: 'isu_kor_nm' },
         { text: '신청일', align:"left", value: 'req_date' },
         { text: '국내/해외', align:"left", value: 'kor_for_type' },
