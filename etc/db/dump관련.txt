@@ -1,0 +1,6 @@
+[DUMP]
+mysqldump -uroot -ptnsenddl1! --default-character-set=utf8 gaespi index_hist > index.dmp
+
+[RESTORE]
+mysql -uroot -ptnsenddl1! kc_etp < ./index.dmp
+

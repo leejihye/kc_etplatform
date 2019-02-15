@@ -18,7 +18,7 @@ export default {
     beforeCreate() {
     },
     created: function() {
-        this.$router.push({ path: '/etp/register' });
+        this.$router.push({ path: '/index/manage' });
     },
     beforeDestroy() {
     },
