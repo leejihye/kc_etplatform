@@ -26,7 +26,15 @@ model.selectIndexInfoOpenReqList = function(options) {
     var stmt = 'SELECT * from info_open_req a WHERE 1=1';
     stmt += ` ORDER BY a.req_date DESC`
     return stmt;
-}
+},
 
+model.selectIndexSummaryHist = function(options) {
+    console.log('selectIndexInfoOpenReqList');
+
+    var stmt = 'SELECT trd_dd, close_idx from index_hist a WHERE 1=1';
+    stmt += ` AND index_cd = \'${options.index_cd}\'`;
+    // stmt += ` limit 200`
+    return stmt;
+}
 
 module.exports = model;

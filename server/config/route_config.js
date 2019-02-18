@@ -39,6 +39,7 @@ module.exports = {
         { file: './user/etp/etpregister', path: '/user/etp/getetpapplylist', method: 'getEtpApplyList', session: 'uncheck', type: 'get' },
         //일반 INDEX register
         { file: './user/index/indexmanage', path: '/user/index/getinfoopenreqlist', method: 'getInfoOpenReqList', session: 'uncheck', type: 'get' },
+        { file: './user/index/indexmanage', path: '/user/index/getindexsummaryhist', method: 'getIndexSummaryHist', session: 'uncheck', type: 'get' },
         //일반고객 리포트
         { file: './user/chart', path: '/user/chart/chartlistterm', method: 'getUserChartListTerm', session: 'check', type: 'post' },
         { file: './user/chart', path: '/user/chart/downloadfileterm', method: 'downloadFileTerm',  session: 'check', type: 'post' },

@@ -6,10 +6,10 @@
       <IndexSummaryChart :item="item1"></IndexSummaryChart>
     </v-flex>
     <v-flex md4>
-      <IndexSummaryChart1></IndexSummaryChart1>
+      <IndexSummaryChart :item="item2"></IndexSummaryChart>
     </v-flex>
     <v-flex md4> 
-      <IndexSummaryChart2></IndexSummaryChart2>
+      <IndexSummaryChart :item="item3"></IndexSummaryChart>
     </v-flex>
   </v-layout>
   </v-container>
@@ -56,8 +56,6 @@
 <script>
 import Config       from "@/js/config.js"
 import IndexSummaryChart   from  './IndexSummaryChart.vue'
-import IndexSummaryChart1   from  './IndexSummaryChart1.vue'
-import IndexSummaryChart2   from  './IndexSummaryChart2.vue'
 
 export default {
   props: [],
@@ -74,16 +72,13 @@ export default {
         {text: '요청처리', align:"center", value: 'req_process' },
       ],
       results: [],
-      item1: {chartId: "summaryChart1"},
-      item2: {chartId: "summaryChart2"},
-      item3: {chartId: "summaryChart3"},
+      item1: {chartId: "summaryChart1", indexCd: "K051", chartColor: '#B39DDB'},
+      item2: {chartId: "summaryChart2", indexCd: "DBF001", chartColor: "#9FA8DA"},
+      item3: {chartId: "summaryChart3", indexCd: "DBF002", chartColor: "#90CAF9"},
     };
   },
   components: {
     IndexSummaryChart     : IndexSummaryChart,
-    IndexSummaryChart1    : IndexSummaryChart1,
-    IndexSummaryChart2   : IndexSummaryChart2,
-
   },
   computed:{
 
@@ -111,7 +106,7 @@ export default {
               // "perPage": vm.perPage
           }
       }).then(function(response) {
-          console.log(response);
+          // console.log(response);
           if(response.data.success == false){
               alert("해당 신청현황이 없습니다");
           }else {
