@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Constant from './constant.js';
+import Constant from './store_constant.js';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({

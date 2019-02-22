@@ -3,13 +3,27 @@
   <v-container fluid grid-list-md pa-0 mt-4 mb-4>
   <v-layout row wrap>
     <v-flex md4> 
-      <IndexSummaryChart :item="item1"></IndexSummaryChart>
+      <IndexSummaryChart :item="chartItem1"></IndexSummaryChart>
     </v-flex>
     <v-flex md4>
-      <IndexSummaryChart :item="item2"></IndexSummaryChart>
+      <IndexSummaryChart :item="chartItem2"></IndexSummaryChart>
     </v-flex>
     <v-flex md4> 
-      <IndexSummaryChart :item="item3"></IndexSummaryChart>
+      <IndexSummaryChart :item="chartItem3"></IndexSummaryChart>
+    </v-flex>
+  </v-layout>
+  <v-layout row wrap>
+    <v-flex md3> 
+      <IndexSummaryBox :item="boxItem1"></IndexSummaryBox>
+    </v-flex>
+    <v-flex md3>
+      <IndexSummaryBox :item="boxItem2"></IndexSummaryBox>
+    </v-flex>
+    <v-flex md3> 
+      <IndexSummaryBox :item="boxItem3"></IndexSummaryBox>
+    </v-flex>
+    <v-flex md3> 
+      <IndexSummaryBox :item="boxItem4"></IndexSummaryBox>
     </v-flex>
   </v-layout>
   </v-container>
@@ -56,6 +70,7 @@
 <script>
 import Config       from "@/js/config.js"
 import IndexSummaryChart   from  './IndexSummaryChart.vue'
+import IndexSummaryBox   from  './IndexSummaryBox.vue'
 
 export default {
   props: [],
@@ -72,13 +87,21 @@ export default {
         {text: '요청처리', align:"center", value: 'req_process' },
       ],
       results: [],
-      item1: {chartId: "summaryChart1", indexCd: "K051", chartColor: '#B39DDB'},
-      item2: {chartId: "summaryChart2", indexCd: "DBF001", chartColor: "#9FA8DA"},
-      item3: {chartId: "summaryChart3", indexCd: "DBF002", chartColor: "#90CAF9"},
+      chartItem1: {chartId: "summaryChart1", indexCd: "DBF001", chartColor: '#B39DDB',
+        subTitle: 'the Newest Index'},
+      chartItem2: {chartId: "summaryChart2", indexCd: "DBF002", chartColor: "#9FA8DA",
+        subTitle: 'the Best Performed Index'},
+      chartItem3: {chartId: "summaryChart3", indexCd: "DBF003", chartColor: "#90CAF9",
+        subTitle: 'the Most Popular Index'},
+      boxItem1: {title:"발표지수", count: 120, subTitle: '회원사/벤더로 분배되는 지수', updateDate: '25/02/19'},
+      boxItem2: {title:"산출지수", count: 156, subTitle: '미발표 지수를 포함한 플랫폼에서 산출중인 지수', updateDate: '25/02/19'},
+      boxItem3: {title:"프로젝트", count: 7, subTitle: '개발중인 지수', updateDate: '25/02/19'},
+      boxItem4: {title:"조회요청", count: 12, subTitle: '지수상세정보 공개요청 건수', updateDate: '25/02/19'},
     };
   },
   components: {
     IndexSummaryChart     : IndexSummaryChart,
+    IndexSummaryBox : IndexSummaryBox,
   },
   computed:{
 
@@ -112,17 +135,6 @@ export default {
           }else {
             var items = response.data.results;
             var tcount   = response.data.count;
-/*            
-            items.forEach(function(item, index) {
-              if(item.kor_for_type == 'K') {
-                item.kor_for_type = "국내";
-              }else if(item.kor_for_type == 'F') {
-                item.kor_for_type = "해외";
-              }else {
-                item.kor_for_type = "";
-              }
-            });
-*/            
             vm.results = items;
             vm.count = tcount;
           }

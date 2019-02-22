@@ -1,8 +1,15 @@
 <template>
-    <div id="myPieChart2" />
+    <v-layout row wrap>
+        <v-flex xs12>
+            <div id="myPieChart" />
+      </v-flex>
+    </v-layout>
 </template>
 
 <script>
+// import Info   from  './Info.vue'
+// import Index   from  './Index.vue'
+// import Pdf   from  './Pdf.vue'
 
 export default {
         data() {
@@ -27,7 +34,7 @@ export default {
             var options = {'legend':'left',
                 'title':'My Big Pie Chart',
                 'is3D':true,
-                 'width':'100%', 'height':'100%'};
+                 'width':600, 'height':400};
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Element');
             data.addColumn('number', 'Percentage');
@@ -38,7 +45,7 @@ export default {
             ]);
 
             // Instantiate and draw the chart.
-            var chart = new google.visualization.PieChart(document.getElementById('myPieChart2'));
+            var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
             chart.draw(data, options);
         },
     }

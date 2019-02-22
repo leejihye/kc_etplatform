@@ -1,35 +1,58 @@
 <template>
-  <v-toolbar fixed app light clipped-left color="white" class="elevation-0">
-      <v-toolbar-side-icon @click="menuClick"></v-toolbar-side-icon>
-      <v-toolbar-title><router-link class="routerlink" to="/index/manage">ETP PLATFORM</router-link></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-sm-and-down">
-        
-        <v-btn flat color="white"><v-badge overlap color="orange">
-            <span slot="badge">3</span>
-            <v-icon large color="grey">notifications</v-icon>
-        </v-badge></v-btn>
-        <v-btn flat color="white"><v-avatar
-            :tile="tile"
-            :size="avatarSize"
-            color="gray lighten-4">
-            <img src="/assets/img/avatar.png" alt="avatar">
-        </v-avatar></v-btn>
-        <v-btn flat color="primary">[DBfn] James</v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
+<v-toolbar fixed app light clipped-left color="white" class="elevation-0">
+    <v-toolbar-side-icon @click="menuClick"></v-toolbar-side-icon>
+    <v-toolbar-title>
+        <router-link class="routerlink" :to="`${homeUrl}`">ETP PLATFORM</router-link>
+    </v-toolbar-title>
+    <v-spacer></v-spacer>
+    <UserInfo v-if="loginFlag"></UserInfo>
+    <LoginInfo v-if="!loginFlag"></LoginInfo>
+</v-toolbar>
 </template>
 
 <script>
+import UserInfo          from './UserInfo.vue';
+import LoginInfo          from './LoginInfo.vue';
+import Config       from "@/js/config.js";
+import Constant     from '@/store/store_constant.js';
+
 export default {
     data() {
         return {
-            tile: false,
-            avatarSize: "36px",
             isDrawer: true,
+            userId: "",
+            userName: "",
+            loginFlag: false,
+            homeUrl: Config.home_url,
         };
     },
-    methods: {
+    components: {
+        UserInfo: UserInfo,
+        LoginInfo: LoginInfo,
+    },
+    mounted: function() {
+		// this.getUserName();
+	},
+	methods: {
+		getUserName() {
+			this.userId = this.$store.state.user.userid ;
+            this.userName = this.$store.state.user.username ;
+            
+			if(this.userId == "" || this.userId == undefined) {
+                this.logout();
+			}else {
+                this.loginFlag = true;
+				// console.log("Success call...........");
+			}
+        },
+		logout() {
+			this.userId = "";
+            this.userName = "";
+        	this.$store.commit(Constant.DELETE_USER);
+            this.$router.push({
+                path: Config.home_url
+            });
+		},
         menuClick: function() {
             console.log('ToolBar menuClick!!!');
             this.isDrawer = !this.isDrawer;
@@ -40,15 +63,5 @@ export default {
 </script>
 
 <style scoped>
-/*
-header {
-  position: fixed;
-  top: 0;
-  height: 60px;
-  width: 100%;
-  z-index: 2000;
-  background-color: #fff;
-}
-*/
 
 </style>

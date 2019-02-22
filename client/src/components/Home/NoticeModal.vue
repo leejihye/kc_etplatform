@@ -4,35 +4,43 @@
             <div class="modal-wrapper">
                 <div class="modal-container">
                     <div class="modal-header">
-                        <h3><i class="fas fa-edit"></i>&nbsp;&nbsp;공지사항</h3>
+                        <h3><i class="fa fa-clipboard-list"></i>공지사항내용</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  @click="closeStory">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                        <p class="bodymod">
-                        <br/>
-                        안녕하십니까, 코스콤 서비스 인프라팀입니다.<br/>
-                        <br/>
-                        9월 10일 부로 <strong>"코스콤 회원사 보안관제 웹서비스"</strong>가 
-                        개편되었습니다.<br/>
-                        사용자 접속 계정의 비밀번호가 <span style="color:red;font-weight:bold">초기화</span> 되었으니,<br/>
-                        <br/>
-                        최초 접속시 코스콤 담당자께 반드시 문의 주시기 바랍니다.<br/>
-                        <br/>
-                        </p>
-                        <p style="margin-left:25px;">
-                        <i class="fas fa-check fa-fw"></i>
-                        코스콤 회원사 보안관제 웹서비스는 크롬(Chrome),</p>
-                        <p style="margin-left:50px;">익스플로러 11버전(ie11)에 최적화 되어 있습니다.</p>
-                        <br/>
-                        <p style="margin-left:25px;">
-                        <i class="fas fa-user fa-fw"></i>
-                        담당자 : 안정현 과장( 02-767-7116 / bmc@koscom.co.kr)<br/>
-                        <p class="space_mod">이한복 과장 ( 02-767-7123 / hblee@koscom.co.kr)</p>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group row">
+                                <label class="col-md-1 control-label">작성자</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" v-model="storyinfo.writer" id="writer">
+                                </div>
+                                <label class="col-md-1 control-label">작성일</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" v-model="storyinfo.updated_at" id="updated_at">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-1 control-label">제목</label>
+                                <div class="col-md-11">
+                                    <input type="text" class="form-control"  v-model="storyinfo.title" id="title">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-1 control-label">본문</label>
+                                <div class="col-md-11" style="overflow:auto">
+                                    <p class="form-control" style="height:auto;" v-html="storyinfo.contents">
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <div class="tar" role="group" >
-                            <button type="submit" class="btn btn-basic" @click="popClose">확인</button>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-basic" @click="closeStory">목록</button>
                         </div>
-					</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,16 +48,19 @@
 </template>
 
 <script>
+
 export default {
-    props: [],
+    props: ["storyinfo", "gubun"],
+    components: {
+    },
     data: function() {
         return {
         };
     },
     methods: {
-        popClose: function() {
-            this.$EventBus.$emit("popClose");
-        },
+        closeStory: function() {
+            this.$EventBus.$emit("closeStory", this.storyinfo);
+        }
     }
 };
 </script>
@@ -73,7 +84,7 @@ export default {
 }
 
 .modal-container {
-    width: 50%;
+    width:50%;
     margin: 0px auto;
     padding: 20px;
     background-color: #fff;
@@ -81,33 +92,28 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
     transition: all .3s ease;
     font-family: Helvetica, Arial, sans-serif;
-    font-size:1.0625rem;
 }
 
-.bodymod{margin-left:30px;}
-.space_mod{margin-left: 120px;}
 .modal-header {margin-top: 0;padding:10px 0 5px 0;color: #486bdf;border-bottom:2px solid #111;}
 .modal-header h3 i::before {color:#2877c7;}
 .tar {text-align:right;}
-.btn-basic {background:#8c9dad;color:#FFF;font-size:1.0625rem;padding:6px 16px 7px;}
-.btn-basic:hover {background:#2877c7;}
+.btn-basic {background:#2877c7;color:#FFF;font-size:1.0625rem;padding:6px 16px 7px;}
+.btn-basic:hover {background:#145392;}
 .btn-cancel {background:#8c9dad;color:#FFF;font-size:1.0625rem;padding:6px 16px 7px;}
 .btn-cancel:hover {background:#66737e;}
-.btn-gray {background:#8c9dad;color:#FFF;font-size:0.9375rem;padding:6px 16px 7px;margin-left:5px;}
-.btn-gray:hover {background:#66737e;}
 
 .modal-body {
-    margin: 15px 0;
-    max-height: 800px;
-    padding:0;
+    max-height: 700px;
+    overflow-y:auto;
 }
-/* .modal-body .form-group {border-bottom:1px solid #e5e5e5;padding-bottom:15px;} */
-.form-control, .custom-select {border-radius: 2px;}
-.col-form-label {margin:0;padding: 5px 0 0 5px;color:#111;font-size:1.125rem}
+.modal-body .form-group {border-bottom:1px solid #e5e5e5;padding-bottom:15px;}
+.form-control {border-radius: 2px;}
 
+.modal-footer {border-top:1px solid #111;}
 .modal-default-button {
     float: right;
 }
+
 
 .modal-enter {
     opacity: 0;
@@ -122,40 +128,51 @@ export default {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+.writer_mod{
+    width: 35%
+}
+.label_mod{
+    padding-right: 0px; 
+    margin-right: 15px;
+}
+.updatedlabel_mod{
+    margin: 0px 5px;
+    padding-right: 0px;
+}
+.updated_mod{
+    width:45%
+}
+.control-label {margin:0;padding: 5px 0 0 5px;color:#111;font-size:1.125rem}
 
-.form-check-label {
-    /* padding: 0.3rem 0.5rem;
-    margin:0; */
-} 
-.form-check {padding:3px 0 8px;}
-.lamod {
-    float: left;
-    margin:6px 15px 0 0;
-    font-size:1rem;
-    color:#7290b4;
-    font-weight:bold;
+.checkboxlabel_mod{
+    /* margin-top: 5px;
+    margin-left: 30px; */
 }
 .checkbox{
-    display: inline-block;
-    margin-left: 0px;
-    padding:0px;
+    /*transform: scale(1.1);
+     margin-left: 30px; */
+    padding-top: 0px;
 }
-.form-check-inline {display: inline-block;}
+.notice-label{
+    padding-left : 40px;
+    padding-top  : 5px;
+}
+
 .checkbox label {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    padding:4px 5px 0 3px;
+    padding-left: 5px;
 }
 
 .checkbox label::before {
     content: "";
     display: inline-block;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    left: -20px;
-    top:6px;
+    width: 25px;
+    height: 25px;
+    left: 0;
+    margin-left: -30px;
     border: 1px solid #cccccc;
     border-radius: 3px;
     background-color: #fff;
@@ -167,12 +184,13 @@ export default {
 .checkbox label::after {
     display: inline-block;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    left: -20px;
-    top: 5px;
+    width: 25px;
+    height: 25px;
+    left: 0;
+    top: 0;
+    margin-left: -28px;
     padding-left: 3px;
-    padding-top: 5px;
+    padding-top: 1px;
     font-size: 11px;
     color: #555555;
 }
@@ -200,22 +218,7 @@ export default {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: '\f00c';
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-.checkbox input[type="checkbox"]:disabled + label {
-    opacity: 0.65;
-}
-
-.checkbox input[type="checkbox"]:disabled + label::before {
-    background-color: #eeeeee;
-    cursor: not-allowed;
-}
-.mod{
-    width: 60%;
-}
-@media (min-width:992px) {
-    .col-md-offset-2 {margin-left:16.66666667%;}
+    padding-left: 5px;
+    padding-top: 10px;
 }
 </style>

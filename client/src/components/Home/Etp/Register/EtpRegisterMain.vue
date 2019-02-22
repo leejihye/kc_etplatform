@@ -2,11 +2,11 @@
     <v-layout row wrap>
         <v-flex xs12>
             <v-tabs
-            slot="extension"
-            v-model="tab"
-            align-with-title
-            dark
-            color=#333
+                slot="extension"
+                v-model="tab"
+                align-with-title
+                dark
+                color=#333
             >
             <v-tabs-slider color="yellow"></v-tabs-slider>
     

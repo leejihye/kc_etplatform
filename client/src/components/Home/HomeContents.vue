@@ -18,7 +18,7 @@ export default {
     beforeCreate() {
     },
     created: function() {
-        this.$router.push({ path: '/index/manage' });
+        this.$router.push({ path: '/today/today1' });
     },
     beforeDestroy() {
     },
