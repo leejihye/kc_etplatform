@@ -56,9 +56,9 @@ export default {
           title: 'TODAY',
           active: true,
           subitems: [
-            { title: 'TODAY1', link: '/etp/manage' },
-            { title: 'TODAY2', link: '/etp/register'  },
-            { title: 'TODAY3', link: '/etp/contract'  }
+            { title: 'TODAY1', link: '/today/today1' },
+            { title: 'TODAY2', link: '/today/today1'  },
+            { title: 'TODAY3', link: '/today/today1'  }
           ],
         },
         {

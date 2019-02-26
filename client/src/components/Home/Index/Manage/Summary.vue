@@ -3,13 +3,13 @@
   <v-container fluid grid-list-md pa-0 mt-4 mb-4>
   <v-layout row wrap>
     <v-flex md4> 
-      <IndexSummaryChart :item="chartItem1"></IndexSummaryChart>
+        <IndexSummaryCard :item="cardItem1" :chartItem="chartItem1"></IndexSummaryCard>
     </v-flex>
     <v-flex md4>
-      <IndexSummaryChart :item="chartItem2"></IndexSummaryChart>
+        <IndexSummaryCard :item="cardItem2" :chartItem="chartItem2"></IndexSummaryCard>
     </v-flex>
     <v-flex md4> 
-      <IndexSummaryChart :item="chartItem3"></IndexSummaryChart>
+        <IndexSummaryCard :item="cardItem3" :chartItem="chartItem3"></IndexSummaryCard>
     </v-flex>
   </v-layout>
   <v-layout row wrap>
@@ -27,72 +27,53 @@
     </v-flex>
   </v-layout>
   </v-container>
-  <v-card flat>
-    <v-card-title primary-title>
-      <div>
-        <h3 class="headline mb-0">정보공개 요청처리</h3>
-        <div style="color:grey"> 지수 구성종목의 유동비율, cap비율 및 다양한 factor 비율과 기준시가총액 등 지수의 상세 정보를 요청자와 공유합니다.</div>
-      </div>
-    </v-card-title>
-  </v-card>
-  <v-data-table 
-    :headers="headers"
-    :items="results"
-    :rows-per-page-items="rowsPerPageItems"
-    disable-initial-sort
-  >
-    <template slot="items" slot-scope="props">
-      <td class="text-xs-center">{{ props.item.user_id }}</td>
-      <td class="text-xs-center">{{ props.item.inst_name }}</td>
-      <td class="text-xs-center">{{ props.item.user_name }}</td>
-      <td class="text-xs-center">{{ props.item.idx_nm }}</td>
-      <td class="text-xs-center">{{ props.item.idx_sym_code }}</td>
-      <td class="text-xs-center">{{ props.item.req_date }}</td>
-      <td class="text-xs-center"><v-btn small
-        color="green"
-        class="white--text"
-      >
-        <v-icon dark>thumb_up_alt</v-icon>
-        Yes
-      </v-btn>
-      <v-btn small
-        color="blue-grey"
-        class="white--text"
-      >
-        <v-icon dark>thumb_down_alt</v-icon>
-        No
-      </v-btn></td>
-    </template>
-  </v-data-table>
+  <InfoOpenReq></InfoOpenReq>
 </div>    
 </template>
 
 <script>
 import Config       from "@/js/config.js"
-import IndexSummaryChart   from  './IndexSummaryChart.vue'
+import IndexSummaryCard   from  './IndexSummaryCard.vue'
 import IndexSummaryBox   from  './IndexSummaryBox.vue'
+import InfoOpenReq   from  './InfoOpenReq.vue'
 
 export default {
   props: [],
   data() {
     return {
-      rowsPerPageItems: [10, 20, 30, 50],
-      headers: [
-        {text: 'reqID', align:"center", sortable: false, value: 'id' },
-        {text: '신청기관', align:"center", sortable: false, value: 'inst_name'},
-        {text: '신청자', align:"center", sortable: false, value: 'user_name'},
-        {text: '지수', align:"center", value: 'idx_nm' },
-        {text: '지수코드', align:"center", value: 'idx_sym_code' },
-        {text: '요청일자', align:"center", value: 'req_date' },
-        {text: '요청처리', align:"center", value: 'req_process' },
-      ],
-      results: [],
-      chartItem1: {chartId: "summaryChart1", indexCd: "DBF001", chartColor: '#B39DDB',
-        subTitle: 'the Newest Index'},
-      chartItem2: {chartId: "summaryChart2", indexCd: "DBF002", chartColor: "#9FA8DA",
-        subTitle: 'the Best Performed Index'},
-      chartItem3: {chartId: "summaryChart3", indexCd: "DBF003", chartColor: "#90CAF9",
-        subTitle: 'the Most Popular Index'},
+      cardItem1: {
+          name:  "DBF 2차 산업혁명 지수",
+          subTitle: "the Newest Index",
+          close_idx: "300.23",
+          fluc_idx: "+1.65",
+          fluc_rate: "0.51"
+      },
+      cardItem2: {
+          name:  "DBF 4차전지 테마지수",
+          subTitle: "the Best Performed Index",
+          close_idx: "300.23",
+          fluc_idx: "+1.65",
+          fluc_rate: "0.51"
+      },
+      cardItem3: {
+          name:  "DBF 배당성장 지수",
+          subTitle: "the Most Popular Index",
+          close_idx: "300.23",
+          fluc_idx: "+1.65",
+          fluc_rate: "0.51"
+      },
+      chartItem1: {
+          chartId: "summaryChart1", width: "360", height:"150", marginW:10, marginH:20,
+          code: "DBF001", chartColor: '#B39DDB',
+      },
+      chartItem2: {
+          chartId: "summaryChart2", width: "360", height:"150", marginW:10, marginH:20,
+          code: "DBF002", chartColor: '#9FA8DA',
+      },
+      chartItem3: {
+          chartId: "summaryChart3", width: "360", height:"150", marginW:10, marginH:20,
+          code: "DBF003", chartColor: '#90CAF9',
+      },
       boxItem1: {title:"발표지수", count: 120, subTitle: '회원사/벤더로 분배되는 지수', updateDate: '25/02/19'},
       boxItem2: {title:"산출지수", count: 156, subTitle: '미발표 지수를 포함한 플랫폼에서 산출중인 지수', updateDate: '25/02/19'},
       boxItem3: {title:"프로젝트", count: 7, subTitle: '개발중인 지수', updateDate: '25/02/19'},
@@ -100,14 +81,14 @@ export default {
     };
   },
   components: {
-    IndexSummaryChart     : IndexSummaryChart,
-    IndexSummaryBox : IndexSummaryBox,
+    IndexSummaryCard: IndexSummaryCard,
+    IndexSummaryBox: IndexSummaryBox,
+    InfoOpenReq: InfoOpenReq,
   },
   computed:{
 
   },
   mounted: function() {
-      this.getInfoOpenReqList();
   },
   created: function() {
       
@@ -116,36 +97,8 @@ export default {
       
   },
   methods: {
-    getInfoOpenReqList: function() {
-      console.log('getInfoOpenReqList');
-      var vm = this;
-
-      axios.get(Config.base_url+'/user/index/getinfoopenreqlist', {
-          params: {
-              // "bbs_id" : vm.bbs_id,
-              // "seloption" : vm.seloption,
-              // "searchinfo" : vm.searchinfo,
-              // "curPage": vm.curPage,
-              // "perPage": vm.perPage
-          }
-      }).then(function(response) {
-          // console.log(response);
-          if(response.data.success == false){
-              alert("해당 신청현황이 없습니다");
-          }else {
-            var items = response.data.results;
-            var tcount   = response.data.count;
-            vm.results = items;
-            vm.count = tcount;
-          }
-      });
-    }      
   }
 }
 </script>
 <style scoped>
-  table.v-table tbody td, table.v-table tbody th {
-      height: 30px;
-  }
-
 </style>
