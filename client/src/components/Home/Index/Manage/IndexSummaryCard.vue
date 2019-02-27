@@ -12,7 +12,7 @@
 
 <script>
 import Config       from "@/js/config.js"
-import AreaChart   from  '@/components/common/chart/AreaChart.vue'
+import AreaChart   from  '@/components/Common/Chart/AreaChart.vue'
 
 export default {
     props:['item', 'chartItem'],

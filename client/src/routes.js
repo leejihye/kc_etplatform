@@ -8,6 +8,8 @@ import  IndexDevelopMain   from './components/Home/Index/Develop/IndexDevelopMai
 import  EtpManageMain   from './components/Home/Etp/Manage/EtpManageMain.vue'
 import  EtpRegisterMain   from './components/Home/Etp/Register/EtpRegisterMain.vue'
 import  EtpContractMain   from './components/Home/Etp/Contract/EtpContractMain.vue'
+// MARKET INFO
+import  EtpInfoMain   from './components/Home/MarketInfo/EtpInfoMain.vue'
 // TODAY
 import  Today1Main   from './components/Home/Today/Today1Main.vue'
 // 관리자
@@ -38,6 +40,13 @@ export const routes = [
         },
         // TODAY
         {   path : 'today/today1',
+            component: Today1Main,
+        },
+        // MARKET INFO
+        {   path : 'info/etpinfo',
+            component: EtpInfoMain,
+        },
+        {   path : 'info/indexinfo',
             component: Today1Main,
         },
     ]

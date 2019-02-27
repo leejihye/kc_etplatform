@@ -35,11 +35,6 @@ module.exports = {
         { file: './admin/users', path: '/admin/useridcheck', method: 'useridCheck',  session: 'check', type: 'post' },
         { file: './admin/users', path: '/admin/pwdinit', method: 'pwdInit',  session: 'check', type: 'post' },
         { file: './admin/users', path: '/admin/pwdchange', method: 'pwdChange',  session: 'check', type: 'post' },
-        //일반 ETP register
-        { file: './user/etp/etpregister', path: '/user/etp/getetpapplylist', method: 'getEtpApplyList', session: 'uncheck', type: 'get' },
-        //일반 INDEX register
-        { file: './user/index/indexmanage', path: '/user/index/getinfoopenreqlist', method: 'getInfoOpenReqList', session: 'uncheck', type: 'get' },
-        { file: './user/index/indexmanage', path: '/user/index/getindexsummaryhist', method: 'getIndexSummaryHist', session: 'uncheck', type: 'get' },
         //일반고객 리포트
         { file: './user/chart', path: '/user/chart/chartlistterm', method: 'getUserChartListTerm', session: 'check', type: 'post' },
         { file: './user/chart', path: '/user/chart/downloadfileterm', method: 'downloadFileTerm',  session: 'check', type: 'post' },
@@ -48,5 +43,17 @@ module.exports = {
         //일반고객 회원정보죄회
         { file: './user/users', path: '/user/getuserinfo', method: 'getUserInfo', session: 'check', type: 'post' },
         { file: './user/users', path: '/user/updateuserinfo', method: 'updateUserInfo', session: 'check', type: 'post' },
+        //
+        // 신규 개발
+        //일반 ETP register
+        { file: './user/etp/etpregister', path: '/user/etp/getetpapplylist', method: 'getEtpApplyList', session: 'uncheck', type: 'get' },
+        //일반 INDEX register
+        { file: './user/index/indexmanage', path: '/user/index/getinfoopenreqlist', method: 'getInfoOpenReqList', session: 'uncheck', type: 'get' },
+        { file: './user/index/indexmanage', path: '/user/index/getindexsummaryhist', method: 'getIndexSummaryHist', session: 'uncheck', type: 'get' },
+        //일반 MARKET INFO
+        { file: './user/marketinfo/etpinfo', path: '/user/marketinfo/getetfkorlist', method: 'getEtfKorList', session: 'uncheck', type: 'get' },
+        { file: './user/marketinfo/etpinfo', path: '/user/marketinfo/getetfforlist', method: 'getEtfForList', session: 'uncheck', type: 'get' },
+        { file: './user/marketinfo/etpinfo', path: '/user/marketinfo/getetnkorlist', method: 'getEtnKorList', session: 'uncheck', type: 'get' },
+        { file: './user/marketinfo/etpinfo', path: '/user/marketinfo/getetnforlist', method: 'getEtnForList', session: 'uncheck', type: 'get' },
     ]
 }

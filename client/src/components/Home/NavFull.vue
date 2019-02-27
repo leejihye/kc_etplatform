@@ -52,6 +52,15 @@ export default {
           ],
         },
         {
+          action: 'dashboard',
+          title: '시장정보',
+          active: true,
+          subitems: [
+            { title: 'ETP 시장정보', link: '/info/etpinfo' },
+            { title: '기초지수 시장정보', link: '/info/indexinfo' },
+          ],
+        },
+        {
           action: 'schedule',
           title: 'TODAY',
           active: true,

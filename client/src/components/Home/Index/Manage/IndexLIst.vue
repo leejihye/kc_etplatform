@@ -1,143 +1,97 @@
 <template>
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      class="elevation-1"
-    >
-      <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
-      </template>
-    </v-data-table>
+<div>
+  <v-card flat>
+    <v-card-title primary-title>
+      <div>
+        <h3 class="headline mb-0">Index List | </h3>
+      </div>
+    </v-card-title>
+  </v-card>
+  <v-data-table 
+    :headers="headers"
+    :items="results"
+    :rows-per-page-items="rowsPerPageItems"
+    disable-initial-sort
+  >
+    <template slot="items" slot-scope="props">
+      <td class="text-xs-center">{{ props.item.user_id }}</td>
+      <td class="text-xs-center">{{ props.item.inst_name }}</td>
+      <td class="text-xs-center">{{ props.item.user_name }}</td>
+      <td class="text-xs-center">{{ props.item.idx_nm }}</td>
+      <td class="text-xs-center">{{ props.item.idx_sym_code }}</td>
+      <td class="text-xs-center">{{ props.item.req_date }}</td>
+      <td class="text-xs-center">{{ props.item.req_date }}</td>
+      <td class="text-xs-center">
+        <v-icon>equalizer</v-icon>
+      </td>
+    </template>
+  </v-data-table>
+</div>    
 </template>
 
 <script>
+import Config       from "@/js/config.js"
 
 export default {
-        props: [],
-        data() {
-            return {
-              headers: [
-        {
-          text: 'Dessert (100g serving)',
-          align: 'left',
-          sortable: false,
-          value: 'name'
-        },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' }
+  props: [],
+  data() {
+    return {
+      inst_cd: '06485', // FnGuide 로 테스트
+      results: [],
+      rowsPerPageItems: [20, 10, 30, 50],
+      headers: [
+        {text: 'ID', align:"center", sortable: false, value: 'id' },
+        {text: '지수명', align:"center", sortable: false, value: 'inst_name'},
+        {text: '등록일', align:"center", sortable: false, value: 'user_name'},
+        {text: '발표여부', align:"center", value: 'idx_nm' },
+        {text: '산출타입', align:"center", value: 'idx_sym_code' },
+        {text: 'ETP', align:"center", value: 'req_date' },
+        {text: '정보조회기관', align:"center", value: 'req_process' },
+        {text: '', align:"center", value: 'index_info' },
       ],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: '1%'
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: '1%'
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7%'
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: '8%'
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: '16%'
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: '0%'
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: '2%'
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: '45%'
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: '22%'
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: '6%'
-        }
-      ],
-            };
-        },
-        components: {
-            
-        },
-        computed:{
+    };
+  },
+  mounted: function() {
+      this.getInfoOpenReqList();
+  },
+  created: function() {
+      
+  },
+  beforeDestroy() {
+      
+  },
+  methods: {
+    getInfoOpenReqList: function() {
+      console.log('getInfoOpenReqList');
+      var vm = this;
 
-        },
-        created: function() {
-            
-        },
-        beforeDestroy() {
-            
-        },
-        mounted: function() {
-            
-        },
-        methods: {
-            
-        }
-    }
+      axios.get(Config.base_url+'/user/index/getinfoopenreqlist', {
+          params: {
+              // "bbs_id" : vm.bbs_id,
+              // "seloption" : vm.seloption,
+              // "searchinfo" : vm.searchinfo,
+              // "curPage": vm.curPage,
+              // "perPage": vm.perPage
+          }
+      }).then(function(response) {
+          // console.log(response);
+          if(response.data.success == false){
+              alert("해당 신청현황이 없습니다");
+          }else {
+            var items = response.data.results;
+            var tcount   = response.data.count;
+            vm.results = items;
+            vm.count = tcount;
+          }
+      });
+    },
+      
+  }
+}
 </script>
 <style scoped>
+  table.v-table tbody td, table.v-table tbody th {
+      height: 30px;
+  }
 
 </style>

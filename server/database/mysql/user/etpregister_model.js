@@ -14,7 +14,7 @@ model.selectEtpRegisterList = function(options) {
         ifnull(a.ridx_dist_sym_code, a.idx_sym_code) as basic_idx, \
         a.isu_eng_nm \
         from m001uetpmaster a \
-        LEFT JOIN domain_mast b \
+        LEFT JOIN tm_domain_mast b \
         ON a.inst_cd = b.inst_cd \
         WHERE 1=1';
 
