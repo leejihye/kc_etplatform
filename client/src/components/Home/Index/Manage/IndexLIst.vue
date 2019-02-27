@@ -36,7 +36,7 @@ export default {
   props: [],
   data() {
     return {
-      inst_cd: '06485', // FnGuide 로 테스트
+      inst_cd: '06485', // FnGuide 지수사업자 코드로 테스트
       results: [],
       rowsPerPageItems: [20, 10, 30, 50],
       headers: [

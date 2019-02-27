@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card @mouseenter="modalIndexInfo">
         <div class="card_title">
             <h5 class="headline mb-0">{{item.name}}</h5>
             <div><span class="grey--text">{{item.subTitle}}</span></div>
@@ -19,6 +19,7 @@ export default {
     data() {
         return {
             chartLoadFlag: false,
+            modalIndexInfoFlag: false,
             dataSet: [],
         };
     },    
@@ -55,6 +56,9 @@ export default {
                 }
             });
         },
+        modalIndexInfo: function() {
+            console.log("modalIndexInfo.......");
+        }
     }
 }
 </script>
