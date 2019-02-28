@@ -7,6 +7,7 @@
       </div>
     </v-card-title>
   </v-card>
+  <IndexInfoModal v-if="modalFlag" :modalFlag="modalFlag"></IndexInfoModal>
   <v-data-table 
     :headers="headers"
     :items="results"
@@ -20,9 +21,14 @@
       <td class="text-xs-center">{{ props.item.idx_nm }}</td>
       <td class="text-xs-center">{{ props.item.idx_sym_code }}</td>
       <td class="text-xs-center">{{ props.item.req_date }}</td>
-      <td class="text-xs-center">{{ props.item.req_date }}</td>
+      <td class="text-xs-center">3</td>
       <td class="text-xs-center">
-        <v-icon>equalizer</v-icon>
+<!--        
+        <v-btn color="primary" dark @click.stop="showIndexInfoModal()">
+          <v-icon>equalizer</v-icon>
+        </v-btn>
+-->        
+        <v-icon @click.stop="showIndexInfoModal(pros.item)">equalizer</v-icon>
       </td>
     </template>
   </v-data-table>
@@ -31,12 +37,12 @@
 
 <script>
 import Config       from "@/js/config.js"
+import IndexInfoModal   from  './IndexInfoModal.vue'
 
 export default {
   props: [],
   data() {
     return {
-      inst_cd: '06485', // FnGuide 지수사업자 코드로 테스트
       results: [],
       rowsPerPageItems: [20, 10, 30, 50],
       headers: [
@@ -49,29 +55,29 @@ export default {
         {text: '정보조회기관', align:"center", value: 'req_process' },
         {text: '', align:"center", value: 'index_info' },
       ],
+      modalFlag: false,
     };
+  },
+  components: {
+    IndexInfoModal: IndexInfoModal,
   },
   mounted: function() {
       this.getInfoOpenReqList();
   },
   created: function() {
-      
+      this.$EventBus.$on('closeIndexInfoModal', this.closeIndexInfoModal);
   },
   beforeDestroy() {
-      
-  },
+      this.$EventBus.$off('closeIndexInfoModal');
+  },    
   methods: {
-    getInfoOpenReqList: function() {
-      console.log('getInfoOpenReqList');
+    getIndexInfoManageList: function() {
+      console.log('getIndexInfoManageList');
       var vm = this;
 
-      axios.get(Config.base_url+'/user/index/getinfoopenreqlist', {
+      axios.get(Config.base_url+'/user/index/getindexinfomanagelist', {
           params: {
-              // "bbs_id" : vm.bbs_id,
-              // "seloption" : vm.seloption,
-              // "searchinfo" : vm.searchinfo,
-              // "curPage": vm.curPage,
-              // "perPage": vm.perPage
+              "instCd": "FNGUIDE"
           }
       }).then(function(response) {
           // console.log(response);
@@ -85,6 +91,12 @@ export default {
           }
       });
     },
+    showIndexInfoModal: function(item) {
+      this.modalFlag = true;
+    },
+    closeIndexInfoModal: function() {
+      this.modalFlag = false;
+    }
       
   }
 }
