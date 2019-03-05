@@ -61,15 +61,15 @@ export default {
   components: {
     IndexInfoModal: IndexInfoModal,
   },
-  mounted: function() {
-      this.getInfoOpenReqList();
-  },
   created: function() {
       this.$EventBus.$on('closeIndexInfoModal', this.closeIndexInfoModal);
   },
   beforeDestroy() {
       this.$EventBus.$off('closeIndexInfoModal');
   },    
+  mounted: function() {
+      this.getInfoOpenReqList();
+  },
   methods: {
     getIndexInfoManageList: function() {
       console.log('getIndexInfoManageList');

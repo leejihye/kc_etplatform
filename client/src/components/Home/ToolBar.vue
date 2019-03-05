@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import UserInfo          from './UserInfo.vue';
-import LoginInfo          from './LoginInfo.vue';
+import UserInfo          from './User/UserInfo.vue';
+import LoginInfo          from './User/LoginInfo.vue';
+import LoginModal          from './User/LoginModal.vue';
 import Config       from "@/js/config.js";
 import Constant     from '@/store/store_constant.js';
 
@@ -23,13 +24,21 @@ export default {
             userId: "",
             userName: "",
             loginFlag: false,
+            clickLoginFlag: false,
             homeUrl: Config.home_url,
         };
     },
     components: {
         UserInfo: UserInfo,
         LoginInfo: LoginInfo,
+        LoginModal: LoginModal
     },
+    created: function() {
+        this.$EventBus.$on('closeLoginModal', this.closeLoginModal);
+    },
+    beforeDestroy() {
+        this.$EventBus.$off('closeLoginModal');
+    },    
     mounted: function() {
 		// this.getUserName();
 	},
