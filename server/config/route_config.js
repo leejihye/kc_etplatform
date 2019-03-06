@@ -40,7 +40,7 @@ module.exports = {
         { file: './user/chart', path: '/user/chart/downloadfileterm', method: 'downloadFileTerm',  session: 'check', type: 'post' },
         { file: './user/chart', path: '/user/chart/chartlistmonth', method: 'getUserChartListMonth',  session: 'check', type: 'post' },
         { file: './user/chart', path: '/user/chart/downloadfilemonth', method: 'downloadFileMonth',  session: 'check', type: 'post' },
-        //일반고객 회원정보죄회
+        //일반고객 회원정보조회
         { file: './user/users', path: '/user/getuserinfo', method: 'getUserInfo', session: 'check', type: 'post' },
         { file: './user/users', path: '/user/updateuserinfo', method: 'updateUserInfo', session: 'check', type: 'post' },
         //
