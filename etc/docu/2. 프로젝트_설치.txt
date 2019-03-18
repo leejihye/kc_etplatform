@@ -1,0 +1,24 @@
+> cd /workspace/kc_etplatform/server
+> npm install
+> node server.js
+>
+PS D:\workspace\kc_etplatform\server> node server.js
+config.server_port : 8024
+route_loader.routerInit 호출됨.
+cron_scheduler.init 호출됨.
+서버가 시작되었습니다. 포트 : 8024
+init() 호출됨.
+설정에 정의된 모델의 수 : 5
+[MYSQL] 모델 이름 [UserMember] 이 mydb 객체의 속성으로 추가됨.
+[MYSQL] 모델 이름 [EtpRegister] 이 mydb 객체의 속성으로 추가됨.
+[MYSQL] 모델 이름 [IndexManage] 이 mydb 객체의 속성으로 추가됨.
+[MYSQL] 모델 이름 [EtpInfo] 이 mydb 객체의 속성으로 추가됨.
+[MYSQL] 모델 이름 [AdminMember] 이 mydb 객체의 속성으로 추가됨.
+[MYSQL]mydb 객체가 app 객체의 속성으로 추가됨.
+mysql is connected successfully.
+>
+> 다른 터미널에서
+> cd /workspace/kc_etplatform/client
+> npm install
+> npm run dev
+> 브라우저에서 접속됨.
