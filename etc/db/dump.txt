@@ -1,0 +1,9 @@
+[DUMP]
+(WINDOW 에서 DUMP 시 cmd 에서 실시. powershell 에서 하면 한글깨짐)
+mysqldump -ukc_etp -pkc_etp --default-character-set=utf8 kc_etp > kc_etp.dmp
+
+mysqldump -uroot -ptnsenddl1! --default-character-set=utf8 gaespi index_hist > index.dmp
+
+[RESTORE]
+mysql -uroot -ptnsenddl1! kc_etp < ./index.dmp
+
