@@ -12,7 +12,7 @@ mysql> alter user 'root'@'localhost' identified by 'tnsenddl1!', 'root'@'localho
 
 mysql> flush privileges;
 
-mysql> create user kc_etp identified by 'kc_checktool';
+mysql> create user kc_etp identified by 'kc_etp';
 
 mysql> create user kc_etp@localhost identified by 'kc_etp';
 
